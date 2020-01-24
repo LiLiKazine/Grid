@@ -11,9 +11,12 @@ import RxSwift
 import RxCocoa
 
 class ViewController: UIViewController {
-
+    typealias Line = GridMask.Line
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var widgetContainer: UIView!
     @IBOutlet weak var mainIMV: UIImageView!
+    @IBOutlet weak var gridView: GridView!
+    @IBOutlet weak var gridMask: GridMask!
     
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var trailing: NSLayoutConstraint!
@@ -29,7 +32,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         singleTapGesture.require(toFail: twiceTapGesture)
-        
+        gridView.positionSubject
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] position in
+                let lines: [Line] = [
+                    Line(anchorOffset: position.x1, isHorizontal: false),
+                    Line(anchorOffset: position.x2, isHorizontal: false),
+                    Line(anchorOffset: position.y1, isHorizontal: true),
+                    Line(anchorOffset: position.y2, isHorizontal: true)
+                ]
+                self?.gridMask.update(lines: lines)
+            })
+        .disposed(by: bag)
         
     }
     
@@ -39,12 +53,9 @@ class ViewController: UIViewController {
     }
 
     private func updateIMV() {
-        if let img = mainIMV.image {
-            let insets = img.size.measureInsets(in: scrollView.frame.size).attributes
+        if let _ = mainIMV.image {
+            centerIMV()
             updateMaxZoomScale()
-            for i in 0...3 {
-                constraints[i].constant = insets[i]
-            }
             view.layoutIfNeeded()
         }
     }
@@ -67,7 +78,7 @@ class ViewController: UIViewController {
     }
     
     private func centerIMV() {
-        let insets = mainIMV.frame.size
+        let insets = widgetContainer.frame.size
             .measureInsets(in: scrollView.frame.size)
         .attributes
         for i in 0...3 {
@@ -81,20 +92,13 @@ class ViewController: UIViewController {
         scrollView.setZoomScale(CGFloat(1/ratio), animated: true)
     }
     
-    @IBAction func importAction(_ sender: UIBarButtonItem) {
-        UIImagePickerController.rx.createWithParent(self) { picker in
-            picker.sourceType = .photoLibrary
-            picker.allowsEditing = false
+    @IBAction func importAction(_ sender: UIBarButtonItem) {if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
         }
-        .flatMap {
-            $0.rx.didFinishPickingMediaWithInfo
-        }
-        .take(1)
-        .map { info in
-            return info[.originalImage] as? UIImage
-        }
-        .bind(to: mainIMV.rx.image)
-        .disposed(by: bag)
+        
     }
 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
@@ -114,11 +118,28 @@ class ViewController: UIViewController {
 
 extension ViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return mainIMV
+        return widgetContainer
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         centerIMV()
+    }
+}
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true) {
+            picker.delegate = nil
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage 
+        picker.dismiss(animated: true) { [weak self] in
+            picker.delegate = nil
+            self?.mainIMV.image = image
+            self?.updateIMV()
+        }
     }
 }
 

@@ -87,3 +87,12 @@ extension Reactive where Base: UIImagePickerController {
         }
     }
 }
+
+open class RxImagePickerDelegateProxy
+    : RxNavigationControllerDelegateProxy, UIImagePickerControllerDelegate {
+
+    public init(imagePicker: UIImagePickerController) {
+        super.init(navigationController: imagePicker)
+    }
+
+}

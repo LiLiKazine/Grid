@@ -19,6 +19,9 @@ class GridView: UIView {
     @IBOutlet weak var h2Line: ActiveLine!
     @IBOutlet weak var v1Line: ActiveLine!
     @IBOutlet weak var v2Line: ActiveLine!
+    
+    let positionSubject: PublishSubject<Position> = .init()
+    
     private let bag = DisposeBag()
     private var baseVal: CGFloat?
 
@@ -31,8 +34,21 @@ class GridView: UIView {
         constraint.constant = offset + (baseVal ?? 0)
         if sender.state == .ended {
             baseVal = nil
+            updated()
         }
         contentView.layoutIfNeeded()
+    }
+    
+    private func updated() {
+        let position = Position(x1: v1Line.offset, x2: v2Line.offset, y1: h1Line.offset, y2: h2Line.offset)
+        positionSubject.onNext(position)
+    }
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return h1Line.frame.contains(point) ||
+            h2Line.frame.contains(point) ||
+            v1Line.frame.contains(point) ||
+            v2Line.frame.contains(point)
     }
     
     private func bindRx() {
@@ -68,12 +84,10 @@ class GridView: UIView {
     }
 
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    struct Position {
+        var x1: CGFloat
+        var x2:  CGFloat
+        var y1: CGFloat
+        var y2: CGFloat
     }
-    */
-
 }

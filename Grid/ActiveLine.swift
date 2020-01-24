@@ -14,6 +14,14 @@ class ActiveLine: UIView {
     @IBInspectable var lineColor: UIColor = .red
     let panSubject: PublishSubject<UIPanGestureRecognizer> = .init()
     
+    var offset: CGFloat {
+        if isHorizontal {
+            return (self.frame.minY + self.frame.maxY) * 0.5
+        } else {
+            return (self.frame.minX + self.frame.maxX) * 0.5
+        }
+    }
+    
     private var lineRect: CGRect?
     
     private func initView() {

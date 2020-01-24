@@ -18,18 +18,46 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSZ-Lp-dAy">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="spaceman" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-r4-BWl">
-                                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </imageView>
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7N-3p-f1I" userLabel="WidgetContainer">
+                                        <rect key="frame" x="100" y="100" width="800" height="600"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" insetsLayoutMarginsFromSafeArea="NO" image="spaceman" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-r4-BWl">
+                                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rf1-3j-cL3" customClass="GridView" customModule="Grid" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-n0-pBx" customClass="GridMask" customModule="Grid" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="TZ8-n0-pBx" firstAttribute="trailing" secondItem="Rf1-3j-cL3" secondAttribute="trailing" id="59G-YH-iaE"/>
+                                            <constraint firstAttribute="bottom" secondItem="YnS-r4-BWl" secondAttribute="bottom" id="8kL-oR-AUF"/>
+                                            <constraint firstItem="YnS-r4-BWl" firstAttribute="leading" secondItem="Rf1-3j-cL3" secondAttribute="leading" id="9eC-BK-NEl"/>
+                                            <constraint firstItem="TZ8-n0-pBx" firstAttribute="leading" secondItem="Rf1-3j-cL3" secondAttribute="leading" id="Bde-aR-TdM"/>
+                                            <constraint firstItem="TZ8-n0-pBx" firstAttribute="bottom" secondItem="Rf1-3j-cL3" secondAttribute="bottom" id="Bo7-i0-OiS"/>
+                                            <constraint firstItem="YnS-r4-BWl" firstAttribute="bottom" secondItem="Rf1-3j-cL3" secondAttribute="bottom" id="GYN-Jc-DAj"/>
+                                            <constraint firstAttribute="trailing" secondItem="YnS-r4-BWl" secondAttribute="trailing" id="KFz-p8-rxe"/>
+                                            <constraint firstItem="YnS-r4-BWl" firstAttribute="leading" secondItem="r7N-3p-f1I" secondAttribute="leading" id="TLp-0s-rDf"/>
+                                            <constraint firstItem="YnS-r4-BWl" firstAttribute="trailing" secondItem="Rf1-3j-cL3" secondAttribute="trailing" id="XFb-dy-5r1"/>
+                                            <constraint firstItem="YnS-r4-BWl" firstAttribute="top" secondItem="r7N-3p-f1I" secondAttribute="top" id="cai-5U-Ffx"/>
+                                            <constraint firstItem="YnS-r4-BWl" firstAttribute="top" secondItem="Rf1-3j-cL3" secondAttribute="top" id="jZr-8c-dj7"/>
+                                            <constraint firstItem="TZ8-n0-pBx" firstAttribute="top" secondItem="Rf1-3j-cL3" secondAttribute="top" id="lUu-k2-PYJ"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="YbF-8l-wj9" firstAttribute="trailing" secondItem="YnS-r4-BWl" secondAttribute="trailing" id="3l8-IR-VOF"/>
-                                    <constraint firstItem="YnS-r4-BWl" firstAttribute="leading" secondItem="YbF-8l-wj9" secondAttribute="leading" id="Qy0-fa-eAM"/>
-                                    <constraint firstItem="YbF-8l-wj9" firstAttribute="bottom" secondItem="YnS-r4-BWl" secondAttribute="bottom" id="V0K-ub-Y9v"/>
-                                    <constraint firstItem="YnS-r4-BWl" firstAttribute="top" secondItem="YbF-8l-wj9" secondAttribute="top" id="YoO-y6-zC5"/>
+                                    <constraint firstItem="YbF-8l-wj9" firstAttribute="bottom" secondItem="r7N-3p-f1I" secondAttribute="bottom" constant="100" id="Gid-Bi-fVW"/>
+                                    <constraint firstItem="r7N-3p-f1I" firstAttribute="top" secondItem="YbF-8l-wj9" secondAttribute="top" constant="100" id="JKo-OW-Oth"/>
+                                    <constraint firstItem="r7N-3p-f1I" firstAttribute="leading" secondItem="YbF-8l-wj9" secondAttribute="leading" constant="100" id="QT6-59-3CG"/>
+                                    <constraint firstItem="YbF-8l-wj9" firstAttribute="trailing" secondItem="r7N-3p-f1I" secondAttribute="trailing" constant="100" id="ubu-K9-Mhp"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="YbF-8l-wj9"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="BvB-8l-4XB"/>
@@ -39,21 +67,13 @@
                                     <outletCollection property="gestureRecognizers" destination="qy6-ex-V2F" appends="YES" id="Q08-Sq-6r4"/>
                                 </connections>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rf1-3j-cL3" customClass="GridView" customModule="Grid" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hSZ-Lp-dAy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2zw-mZ-DbB"/>
-                            <constraint firstItem="Rf1-3j-cL3" firstAttribute="top" secondItem="YnS-r4-BWl" secondAttribute="top" id="Bwa-P2-qYw"/>
                             <constraint firstItem="hSZ-Lp-dAy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MuY-hW-4qY"/>
-                            <constraint firstItem="hSZ-Lp-dAy" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="UHE-LA-znA"/>
-                            <constraint firstItem="Rf1-3j-cL3" firstAttribute="trailing" secondItem="YnS-r4-BWl" secondAttribute="trailing" id="bRg-h4-Zkh"/>
-                            <constraint firstItem="Rf1-3j-cL3" firstAttribute="leading" secondItem="YnS-r4-BWl" secondAttribute="leading" id="nEw-Eq-KHC"/>
+                            <constraint firstAttribute="trailing" secondItem="hSZ-Lp-dAy" secondAttribute="trailing" id="UHE-LA-znA"/>
                             <constraint firstAttribute="bottom" secondItem="hSZ-Lp-dAy" secondAttribute="bottom" id="uhZ-mZ-CBq"/>
-                            <constraint firstItem="Rf1-3j-cL3" firstAttribute="bottom" secondItem="YnS-r4-BWl" secondAttribute="bottom" id="zxf-ax-xIn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -65,14 +85,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottom" destination="V0K-ub-Y9v" id="Dfq-wz-Ug8"/>
-                        <outlet property="leading" destination="Qy0-fa-eAM" id="V1O-nh-0Op"/>
+                        <outlet property="bottom" destination="Gid-Bi-fVW" id="pG9-YY-DAo"/>
+                        <outlet property="gridMask" destination="TZ8-n0-pBx" id="Nkx-98-hOe"/>
+                        <outlet property="gridView" destination="Rf1-3j-cL3" id="SNf-OX-bKz"/>
+                        <outlet property="leading" destination="QT6-59-3CG" id="LDA-eG-g5g"/>
                         <outlet property="mainIMV" destination="YnS-r4-BWl" id="noW-n5-OS3"/>
                         <outlet property="scrollView" destination="hSZ-Lp-dAy" id="1Fa-r1-sot"/>
                         <outlet property="singleTapGesture" destination="zMu-If-WQe" id="XH3-D6-iPO"/>
-                        <outlet property="top" destination="YoO-y6-zC5" id="wkM-6D-S7k"/>
-                        <outlet property="trailing" destination="3l8-IR-VOF" id="mZb-3N-rCK"/>
+                        <outlet property="top" destination="JKo-OW-Oth" id="MRB-bg-1n4"/>
+                        <outlet property="trailing" destination="ubu-K9-Mhp" id="5X5-CK-pQA"/>
                         <outlet property="twiceTapGesture" destination="qy6-ex-V2F" id="zLp-ir-Pq3"/>
+                        <outlet property="widgetContainer" destination="r7N-3p-f1I" id="ZSb-yB-263"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

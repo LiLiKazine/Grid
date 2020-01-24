@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091F967C23DAA5B500938F78 /* GridMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F967B23DAA5B500938F78 /* GridMask.swift */; };
 		095F0F9B23D9C25700520252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F0F9A23D9C25700520252 /* AppDelegate.swift */; };
 		095F0F9D23D9C25700520252 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F0F9C23D9C25700520252 /* SceneDelegate.swift */; };
 		095F0F9F23D9C25700520252 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F0F9E23D9C25700520252 /* ViewController.swift */; };
@@ -116,6 +117,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		091F967B23DAA5B500938F78 /* GridMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridMask.swift; sourceTree = "<group>"; };
 		095F0F9723D9C25700520252 /* Grid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		095F0F9A23D9C25700520252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		095F0F9C23D9C25700520252 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				095F0FB023D9FAD400520252 /* GridView.swift */,
 				095F0FB223D9FAF300520252 /* GridView.xib */,
 				095F0FB423DA006E00520252 /* ActiveLine.swift */,
+				091F967B23DAA5B500938F78 /* GridMask.swift */,
 			);
 			path = Grid;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				095F0F9F23D9C25700520252 /* ViewController.swift in Sources */,
 				095F0FB523DA006E00520252 /* ActiveLine.swift in Sources */,
 				095F0F9B23D9C25700520252 /* AppDelegate.swift in Sources */,
+				091F967C23DAA5B500938F78 /* GridMask.swift in Sources */,
 				095F0F9D23D9C25700520252 /* SceneDelegate.swift in Sources */,
 				095F0FB123D9FAD400520252 /* GridView.swift in Sources */,
 				095F112B23DA110D00520252 /* UIImagePickerController+RxCreate.swift in Sources */,
