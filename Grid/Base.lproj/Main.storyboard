@@ -1,24 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dxt-I1-2LA">
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Grid-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="Grid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSZ-Lp-dAy">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="spaceman" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-r4-BWl">
+                                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="YbF-8l-wj9" firstAttribute="trailing" secondItem="YnS-r4-BWl" secondAttribute="trailing" id="3l8-IR-VOF"/>
+                                    <constraint firstItem="YnS-r4-BWl" firstAttribute="leading" secondItem="YbF-8l-wj9" secondAttribute="leading" id="Qy0-fa-eAM"/>
+                                    <constraint firstItem="YbF-8l-wj9" firstAttribute="bottom" secondItem="YnS-r4-BWl" secondAttribute="bottom" id="V0K-ub-Y9v"/>
+                                    <constraint firstItem="YnS-r4-BWl" firstAttribute="top" secondItem="YbF-8l-wj9" secondAttribute="top" id="YoO-y6-zC5"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="YbF-8l-wj9"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="BvB-8l-4XB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ez7-yo-kM6"/>
+                                    <outletCollection property="gestureRecognizers" destination="zMu-If-WQe" appends="YES" id="ytA-dc-Vng"/>
+                                    <outletCollection property="gestureRecognizers" destination="qy6-ex-V2F" appends="YES" id="Q08-Sq-6r4"/>
+                                </connections>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rf1-3j-cL3" customClass="GridView" customModule="Grid" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hSZ-Lp-dAy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2zw-mZ-DbB"/>
+                            <constraint firstItem="Rf1-3j-cL3" firstAttribute="top" secondItem="YnS-r4-BWl" secondAttribute="top" id="Bwa-P2-qYw"/>
+                            <constraint firstItem="hSZ-Lp-dAy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MuY-hW-4qY"/>
+                            <constraint firstItem="hSZ-Lp-dAy" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="UHE-LA-znA"/>
+                            <constraint firstItem="Rf1-3j-cL3" firstAttribute="trailing" secondItem="YnS-r4-BWl" secondAttribute="trailing" id="bRg-h4-Zkh"/>
+                            <constraint firstItem="Rf1-3j-cL3" firstAttribute="leading" secondItem="YnS-r4-BWl" secondAttribute="leading" id="nEw-Eq-KHC"/>
+                            <constraint firstAttribute="bottom" secondItem="hSZ-Lp-dAy" secondAttribute="bottom" id="uhZ-mZ-CBq"/>
+                            <constraint firstItem="Rf1-3j-cL3" firstAttribute="bottom" secondItem="YnS-r4-BWl" secondAttribute="bottom" id="zxf-ax-xIn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Grid" id="QpT-or-3XK">
+                        <barButtonItem key="rightBarButtonItem" image="icon_import" id="XQN-52-BnJ">
+                            <connections>
+                                <action selector="importAction:" destination="BYZ-38-t0r" id="bfR-qs-amY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottom" destination="V0K-ub-Y9v" id="Dfq-wz-Ug8"/>
+                        <outlet property="leading" destination="Qy0-fa-eAM" id="V1O-nh-0Op"/>
+                        <outlet property="mainIMV" destination="YnS-r4-BWl" id="noW-n5-OS3"/>
+                        <outlet property="scrollView" destination="hSZ-Lp-dAy" id="1Fa-r1-sot"/>
+                        <outlet property="singleTapGesture" destination="zMu-If-WQe" id="XH3-D6-iPO"/>
+                        <outlet property="top" destination="YoO-y6-zC5" id="wkM-6D-S7k"/>
+                        <outlet property="trailing" destination="3l8-IR-VOF" id="mZb-3N-rCK"/>
+                        <outlet property="twiceTapGesture" destination="qy6-ex-V2F" id="zLp-ir-Pq3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zMu-If-WQe" userLabel="Single Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="tapped:" destination="BYZ-38-t0r" id="nle-68-oWI"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="qy6-ex-V2F" userLabel="Twice Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="tapped:" destination="BYZ-38-t0r" id="gwI-ia-VRQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="735.9375" y="135.7247437774524"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xhr-Jb-bBO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dxt-I1-2LA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oxx-oT-2Mx">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="IGt-b9-8GC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zBp-Bj-mIB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10.546875" y="135.7247437774524"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_import" width="48" height="48"/>
+        <image name="spaceman" width="800" height="600"/>
+    </resources>
 </document>
