@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class ActiveLine: UIView {
     @IBInspectable var isHorizontal: Bool = true
     @IBInspectable var lineColor: UIColor = .red
-//    let panSubject: 
+    let panSubject: PublishSubject<UIPanGestureRecognizer> = .init()
     
     private var lineRect: CGRect?
     
@@ -21,6 +22,7 @@ class ActiveLine: UIView {
     }
     
     @objc func panned(sender: UIPanGestureRecognizer) {
+        panSubject.onNext(sender)
         switch sender.state {
         case .began:
             shadow(show: true)

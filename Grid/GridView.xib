@@ -9,10 +9,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GridView" customModule="Grid" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="jz3-2g-LPe"/>
+                <outlet property="h1Line" destination="QiC-iZ-Ofd" id="AgN-62-Tyz"/>
                 <outlet property="h1Top" destination="b6U-de-9xF" id="d8e-b8-Maz"/>
+                <outlet property="h2Line" destination="i5U-5t-HtA" id="dGg-Ma-yAI"/>
                 <outlet property="h2Top" destination="bQy-Dg-NBI" id="q5H-At-Z7m"/>
                 <outlet property="v1Leading" destination="k24-hB-KiD" id="Acg-nu-Y9c"/>
+                <outlet property="v1Line" destination="kqa-Lg-2xV" id="Irx-U9-xsc"/>
                 <outlet property="v2Leading" destination="Gdu-bv-H28" id="t5V-UW-i3e"/>
+                <outlet property="v2Line" destination="pLc-dW-O0N" id="Hs7-Yx-mRq"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
