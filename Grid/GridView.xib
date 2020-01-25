@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GridView" customModule="Grid" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="jz3-2g-LPe"/>
+                <outlet property="gridMask" destination="r7x-pj-kZN" id="D35-OL-noO"/>
                 <outlet property="h1Line" destination="QiC-iZ-Ofd" id="AgN-62-Tyz"/>
                 <outlet property="h1Top" destination="b6U-de-9xF" id="d8e-b8-Maz"/>
                 <outlet property="h2Line" destination="i5U-5t-HtA" id="dGg-Ma-yAI"/>
@@ -24,6 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7x-pj-kZN" customClass="GridMask" customModule="Grid" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QiC-iZ-Ofd" userLabel="Horizontal1" customClass="ActiveLine" customModule="Grid" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="80" width="414" height="24"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -83,7 +88,9 @@
                 <constraint firstAttribute="bottom" secondItem="pLc-dW-O0N" secondAttribute="bottom" id="0cn-qS-Imb"/>
                 <constraint firstAttribute="trailing" secondItem="QiC-iZ-Ofd" secondAttribute="trailing" id="3hk-55-21m"/>
                 <constraint firstItem="QiC-iZ-Ofd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5V3-8b-3op"/>
+                <constraint firstItem="r7x-pj-kZN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9ez-GD-XYL"/>
                 <constraint firstItem="pLc-dW-O0N" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="206" id="Gdu-bv-H28"/>
+                <constraint firstAttribute="bottom" secondItem="r7x-pj-kZN" secondAttribute="bottom" id="Q0x-sh-qte"/>
                 <constraint firstItem="i5U-5t-HtA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SDV-zL-iOu"/>
                 <constraint firstAttribute="bottom" secondItem="kqa-Lg-2xV" secondAttribute="bottom" id="ZLp-kP-eMj"/>
                 <constraint firstItem="QiC-iZ-Ofd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="b6U-de-9xF"/>
@@ -92,8 +99,10 @@
                 <constraint firstAttribute="trailing" secondItem="i5U-5t-HtA" secondAttribute="trailing" id="eOa-kM-Hk2"/>
                 <constraint firstItem="kqa-Lg-2xV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="60" id="k24-hB-KiD"/>
                 <constraint firstItem="kqa-Lg-2xV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tUT-eN-t0e"/>
+                <constraint firstAttribute="trailing" secondItem="r7x-pj-kZN" secondAttribute="trailing" id="uGX-bd-0hr"/>
+                <constraint firstItem="r7x-pj-kZN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vEv-gE-qKe"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="153"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>
 </document>

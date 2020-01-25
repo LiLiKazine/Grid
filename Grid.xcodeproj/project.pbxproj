@@ -18,13 +18,13 @@
 		095F0FB123D9FAD400520252 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F0FB023D9FAD400520252 /* GridView.swift */; };
 		095F0FB323D9FAF300520252 /* GridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 095F0FB223D9FAF300520252 /* GridView.xib */; };
 		095F0FB523DA006E00520252 /* ActiveLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F0FB423DA006E00520252 /* ActiveLine.swift */; };
-		095F112B23DA110D00520252 /* UIImagePickerController+RxCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F112A23DA110D00520252 /* UIImagePickerController+RxCreate.swift */; };
 		095F116723DA14D500520252 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F114B23DA132F00520252 /* RxCocoa.framework */; };
 		095F116823DA14D500520252 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 095F114B23DA132F00520252 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		095F116923DA14D500520252 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F114923DA132F00520252 /* RxSwift.framework */; };
 		095F116A23DA14D600520252 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 095F114923DA132F00520252 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		095F116C23DA159200520252 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F114D23DA132F00520252 /* RxRelay.framework */; };
 		095F116D23DA159200520252 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 095F114D23DA132F00520252 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09CBE53C23DC2E6700746D57 /* LayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CBE53B23DC2E6700746D57 /* LayerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,8 +130,8 @@
 		095F0FB023D9FAD400520252 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		095F0FB223D9FAF300520252 /* GridView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridView.xib; sourceTree = "<group>"; };
 		095F0FB423DA006E00520252 /* ActiveLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLine.swift; sourceTree = "<group>"; };
-		095F112A23DA110D00520252 /* UIImagePickerController+RxCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+RxCreate.swift"; sourceTree = "<group>"; };
 		095F113B23DA132F00520252 /* Rx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rx.xcodeproj; path = ../RxSwift/Rx.xcodeproj; sourceTree = "<group>"; };
+		09CBE53B23DC2E6700746D57 /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +176,7 @@
 				095F0FA323D9C25900520252 /* Assets.xcassets */,
 				095F0FA523D9C25900520252 /* LaunchScreen.storyboard */,
 				095F0FA823D9C25900520252 /* Info.plist */,
-				095F112A23DA110D00520252 /* UIImagePickerController+RxCreate.swift */,
+				09CBE53B23DC2E6700746D57 /* LayerManager.swift */,
 				095F0FAE23D9D4CE00520252 /* SizeTools.swift */,
 				095F0FB023D9FAD400520252 /* GridView.swift */,
 				095F0FB223D9FAF300520252 /* GridView.xib */,
@@ -366,10 +366,10 @@
 				095F0F9F23D9C25700520252 /* ViewController.swift in Sources */,
 				095F0FB523DA006E00520252 /* ActiveLine.swift in Sources */,
 				095F0F9B23D9C25700520252 /* AppDelegate.swift in Sources */,
+				09CBE53C23DC2E6700746D57 /* LayerManager.swift in Sources */,
 				091F967C23DAA5B500938F78 /* GridMask.swift in Sources */,
 				095F0F9D23D9C25700520252 /* SceneDelegate.swift in Sources */,
 				095F0FB123D9FAD400520252 /* GridView.swift in Sources */,
-				095F112B23DA110D00520252 /* UIImagePickerController+RxCreate.swift in Sources */,
 				095F0FAF23D9D4CE00520252 /* SizeTools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

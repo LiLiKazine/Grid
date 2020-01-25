@@ -15,9 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var widgetContainer: UIView!
     @IBOutlet weak var mainIMV: UIImageView!
-    @IBOutlet weak var gridView: GridView!
-    @IBOutlet weak var gridMask: GridMask!
-    
+    @IBOutlet weak var gridView: GridView!    
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var top: NSLayoutConstraint!
@@ -32,19 +30,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         singleTapGesture.require(toFail: twiceTapGesture)
-        gridView.positionSubject
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] position in
-                let lines: [Line] = [
-                    Line(anchorOffset: position.x1, isHorizontal: false),
-                    Line(anchorOffset: position.x2, isHorizontal: false),
-                    Line(anchorOffset: position.y1, isHorizontal: true),
-                    Line(anchorOffset: position.y2, isHorizontal: true)
-                ]
-                self?.gridMask.update(lines: lines)
-            })
-        .disposed(by: bag)
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fitIMV()
     }
     
     override func viewDidLayoutSubviews() {
@@ -100,7 +90,11 @@ class ViewController: UIViewController {
         }
         
     }
-
+    
+    @IBAction func layerAction(_ sender: UIBarButtonItem) {
+        
+    }
+    
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
         switch sender {
         case singleTapGesture:

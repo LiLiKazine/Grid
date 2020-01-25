@@ -19,35 +19,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7N-3p-f1I" userLabel="WidgetContainer">
-                                        <rect key="frame" x="100" y="100" width="800" height="600"/>
+                                        <rect key="frame" x="100" y="100" width="945" height="1680"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" insetsLayoutMarginsFromSafeArea="NO" image="spaceman" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-r4-BWl">
-                                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                            <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" insetsLayoutMarginsFromSafeArea="NO" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-r4-BWl">
+                                                <rect key="frame" x="0.0" y="0.0" width="945" height="1680"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rf1-3j-cL3" customClass="GridView" customModule="Grid" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-n0-pBx" customClass="GridMask" customModule="Grid" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="945" height="1680"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="TZ8-n0-pBx" firstAttribute="trailing" secondItem="Rf1-3j-cL3" secondAttribute="trailing" id="59G-YH-iaE"/>
                                             <constraint firstAttribute="bottom" secondItem="YnS-r4-BWl" secondAttribute="bottom" id="8kL-oR-AUF"/>
                                             <constraint firstItem="YnS-r4-BWl" firstAttribute="leading" secondItem="Rf1-3j-cL3" secondAttribute="leading" id="9eC-BK-NEl"/>
-                                            <constraint firstItem="TZ8-n0-pBx" firstAttribute="leading" secondItem="Rf1-3j-cL3" secondAttribute="leading" id="Bde-aR-TdM"/>
-                                            <constraint firstItem="TZ8-n0-pBx" firstAttribute="bottom" secondItem="Rf1-3j-cL3" secondAttribute="bottom" id="Bo7-i0-OiS"/>
                                             <constraint firstItem="YnS-r4-BWl" firstAttribute="bottom" secondItem="Rf1-3j-cL3" secondAttribute="bottom" id="GYN-Jc-DAj"/>
                                             <constraint firstAttribute="trailing" secondItem="YnS-r4-BWl" secondAttribute="trailing" id="KFz-p8-rxe"/>
                                             <constraint firstItem="YnS-r4-BWl" firstAttribute="leading" secondItem="r7N-3p-f1I" secondAttribute="leading" id="TLp-0s-rDf"/>
                                             <constraint firstItem="YnS-r4-BWl" firstAttribute="trailing" secondItem="Rf1-3j-cL3" secondAttribute="trailing" id="XFb-dy-5r1"/>
                                             <constraint firstItem="YnS-r4-BWl" firstAttribute="top" secondItem="r7N-3p-f1I" secondAttribute="top" id="cai-5U-Ffx"/>
                                             <constraint firstItem="YnS-r4-BWl" firstAttribute="top" secondItem="Rf1-3j-cL3" secondAttribute="top" id="jZr-8c-dj7"/>
-                                            <constraint firstItem="TZ8-n0-pBx" firstAttribute="top" secondItem="Rf1-3j-cL3" secondAttribute="top" id="lUu-k2-PYJ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -78,15 +70,21 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Grid" id="QpT-or-3XK">
-                        <barButtonItem key="rightBarButtonItem" image="icon_import" id="XQN-52-BnJ">
-                            <connections>
-                                <action selector="importAction:" destination="BYZ-38-t0r" id="bfR-qs-amY"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="icon_import" id="XQN-52-BnJ">
+                                <connections>
+                                    <action selector="importAction:" destination="BYZ-38-t0r" id="bfR-qs-amY"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="icon_layer" id="eyO-pP-YLv">
+                                <connections>
+                                    <action selector="layerAction:" destination="BYZ-38-t0r" id="508-yq-Jxi"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="bottom" destination="Gid-Bi-fVW" id="pG9-YY-DAo"/>
-                        <outlet property="gridMask" destination="TZ8-n0-pBx" id="Nkx-98-hOe"/>
                         <outlet property="gridView" destination="Rf1-3j-cL3" id="SNf-OX-bKz"/>
                         <outlet property="leading" destination="QT6-59-3CG" id="LDA-eG-g5g"/>
                         <outlet property="mainIMV" destination="YnS-r4-BWl" id="noW-n5-OS3"/>
@@ -132,7 +130,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="example" width="945" height="1680"/>
         <image name="icon_import" width="48" height="48"/>
-        <image name="spaceman" width="800" height="600"/>
+        <image name="icon_layer" width="48" height="48"/>
     </resources>
 </document>

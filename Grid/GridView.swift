@@ -10,7 +10,9 @@ import UIKit
 import RxSwift
 
 class GridView: UIView {
+    typealias Line = GridMask.Line
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var gridMask: GridMask!
     @IBOutlet weak var h1Top: NSLayoutConstraint!
     @IBOutlet weak var h2Top: NSLayoutConstraint!
     @IBOutlet weak var v1Leading: NSLayoutConstraint!
@@ -24,7 +26,7 @@ class GridView: UIView {
     
     private let bag = DisposeBag()
     private var baseVal: CGFloat?
-
+    
     private func move(_ constraint: NSLayoutConstraint, _ sender: UIPanGestureRecognizer, isHorizontal: Bool) {
         let translation = sender.translation(in: contentView)
         let offset = isHorizontal ? translation.y : translation.x
@@ -57,12 +59,27 @@ class GridView: UIView {
         for i in 0..<pairs.count{
             let pair = pairs[i]
             pair.0.panSubject
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { [weak self] sender in
+                    self?.move(pair.1, sender, isHorizontal: i<2)
+                })
+                .disposed(by: bag)
+        }
+        
+        positionSubject
+            .map({ position -> [Line] in
+                return [
+                    Line(anchorOffset: position.x1, isHorizontal: false),
+                    Line(anchorOffset: position.x2, isHorizontal: false),
+                    Line(anchorOffset: position.y1, isHorizontal: true),
+                    Line(anchorOffset: position.y2, isHorizontal: true)
+                ]
+            })
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] sender in
-                self?.move(pair.1, sender, isHorizontal: i<2)
+            .subscribe(onNext: { [weak self] lines in
+                self?.gridMask.update(lines: lines)
             })
             .disposed(by: bag)
-        }
     }
     
     private func initView() {
@@ -82,8 +99,8 @@ class GridView: UIView {
         super.init(coder: coder)
         initView()
     }
-
-
+    
+    
     struct Position {
         var x1: CGFloat
         var x2:  CGFloat
