@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -71,13 +72,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Grid" id="QpT-or-3XK">
                         <rightBarButtonItems>
-                            <barButtonItem image="icon_import" style="plain" id="XQN-52-BnJ">
+                            <barButtonItem image="icon_import" id="XQN-52-BnJ">
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="importAction:" destination="BYZ-38-t0r" id="bfR-qs-amY"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="icon_layer" style="plain" id="eyO-pP-YLv">
+                            <barButtonItem image="icon_layer" id="eyO-pP-YLv">
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="layerAction:" destination="BYZ-38-t0r" id="508-yq-Jxi"/>
@@ -111,11 +112,101 @@
                         <action selector="tapped:" destination="BYZ-38-t0r" id="gwI-ia-VRQ"/>
                     </connections>
                 </tapGestureRecognizer>
-                <view contentMode="scaleToFill" id="L4Q-Nb-ClM" customClass="DropDown" customModule="Grid" customModuleProvider="target">
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L4Q-Nb-ClM" customClass="DropDown" customModule="Grid" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P8g-hO-fal">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="328"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bWe-DK-aEQ">
+                                <size key="itemSize" width="300" height="72"/>
+                                <size key="estimatedItemSize" width="300" height="72"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <cells>
+                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="layer" id="dix-4o-toh" customClass="LayerCollectionCell" customModule="Grid" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="72"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7xR-sV-Gar">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Layer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jX7-h5-hpn">
+                                                <rect key="frame" x="12" y="25.5" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9TQ-hk-j8W">
+                                                <rect key="frame" x="216" y="18" width="72" height="36"/>
+                                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="72" id="JGd-tP-aWj"/>
+                                                    <constraint firstAttribute="height" constant="36" id="szD-Kc-hNq"/>
+                                                </constraints>
+                                                <state key="normal" title="Delete">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deleteAction:" destination="dix-4o-toh" eventType="touchUpInside" id="D0d-k7-9lH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="9TQ-hk-j8W" secondAttribute="trailing" constant="12" id="FeD-nZ-jkw"/>
+                                            <constraint firstItem="jX7-h5-hpn" firstAttribute="centerY" secondItem="7xR-sV-Gar" secondAttribute="centerY" id="H0e-Hl-ijQ"/>
+                                            <constraint firstItem="9TQ-hk-j8W" firstAttribute="centerY" secondItem="7xR-sV-Gar" secondAttribute="centerY" id="Kvc-Rd-15j"/>
+                                            <constraint firstItem="jX7-h5-hpn" firstAttribute="leading" secondItem="7xR-sV-Gar" secondAttribute="leading" constant="12" id="d38-MJ-mPX"/>
+                                        </constraints>
+                                    </collectionViewCellContentView>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <size key="customSize" width="300" height="72"/>
+                                    <connections>
+                                        <outlet property="deleteBtn" destination="9TQ-hk-j8W" id="mED-fm-hCK"/>
+                                        <outlet property="nameLbl" destination="jX7-h5-hpn" id="uqR-aS-Jzf"/>
+                                    </connections>
+                                </collectionViewCell>
+                            </cells>
+                            <connections>
+                                <outlet property="dataSource" destination="L4Q-Nb-ClM" id="iQm-8K-nJ9"/>
+                                <outlet property="delegate" destination="L4Q-Nb-ClM" id="mJ6-oN-UJK"/>
+                            </connections>
+                        </collectionView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAx-hl-7Yh">
+                            <rect key="frame" x="0.0" y="328" width="300" height="72"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="72" id="YKT-ik-bcg"/>
+                            </constraints>
+                            <state key="normal" image="icon_add"/>
+                            <connections>
+                                <action selector="addLayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hr6-vJ-7tN"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <viewLayoutGuide key="safeArea" id="CCr-hX-XKu"/>
+                    <constraints>
+                        <constraint firstItem="P8g-hO-fal" firstAttribute="top" secondItem="L4Q-Nb-ClM" secondAttribute="top" id="Ese-xE-85O"/>
+                        <constraint firstItem="CAx-hl-7Yh" firstAttribute="top" secondItem="P8g-hO-fal" secondAttribute="bottom" id="N7w-1m-Xe7"/>
+                        <constraint firstAttribute="trailing" secondItem="CAx-hl-7Yh" secondAttribute="trailing" id="OBH-NN-sJ4"/>
+                        <constraint firstItem="CAx-hl-7Yh" firstAttribute="leading" secondItem="L4Q-Nb-ClM" secondAttribute="leading" id="Q0w-da-hxX"/>
+                        <constraint firstAttribute="trailing" secondItem="P8g-hO-fal" secondAttribute="trailing" id="XDh-mM-6JV"/>
+                        <constraint firstItem="P8g-hO-fal" firstAttribute="leading" secondItem="L4Q-Nb-ClM" secondAttribute="leading" id="qAQ-hA-L5g"/>
+                        <constraint firstAttribute="bottom" secondItem="CAx-hl-7Yh" secondAttribute="bottom" id="uMI-vf-haQ"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="collectionTopConstraint" destination="Ese-xE-85O" id="Iij-Bp-Eke"/>
+                        <outlet property="layersCollection" destination="P8g-hO-fal" id="m0M-nd-abk"/>
+                    </connections>
                 </view>
             </objects>
             <point key="canvasLocation" x="735.9375" y="135.7247437774524"/>
@@ -141,6 +232,7 @@
     </scenes>
     <resources>
         <image name="example" width="945" height="1680"/>
+        <image name="icon_add" width="36" height="36"/>
         <image name="icon_import" width="24" height="24"/>
         <image name="icon_layer" width="24" height="24"/>
     </resources>

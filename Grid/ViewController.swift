@@ -28,9 +28,11 @@ class ViewController: UIViewController {
         return [top, trailing, bottom, leading]
     }
     private let bag = DisposeBag()
-    private let manager = LayerManager()
+    private var manager: LayerManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        manager = .init(layer: gridView)
         singleTapGesture.require(toFail: twiceTapGesture)
         NotificationCenter.default.rx
             .notification(UIDevice.orientationDidChangeNotification)
@@ -39,7 +41,12 @@ class ViewController: UIViewController {
                 self?.dropDown(false)
             })
         .disposed(by: bag)
-        
+        dropDown.removeSubject
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] i in
+                self?.manager.removeLayer(at: i)
+            })
+        .disposed(by: bag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,7 +66,6 @@ class ViewController: UIViewController {
             view.layoutIfNeeded()
         }
     }
-    
     
     private func maxRatio() -> Double {
         if let img = mainIMV.image {
@@ -98,11 +104,20 @@ class ViewController: UIViewController {
         picker.sourceType = .photoLibrary
         present(picker, animated: true, completion: nil)
         }
-        
     }
     
     @IBAction func layerAction(_ sender: UIBarButtonItem) {
         dropDown(sender.tintColor == .systemBlue)
+    }
+    
+    @IBAction func addLayer(_ sender: UIButton) {
+        let newLayer = GridView(frame: mainIMV.frame)
+        manager.addLayer(newLayer)
+        widgetContainer.addSubview(newLayer)
+        newLayer.translatesAutoresizingMaskIntoConstraints = true
+        newLayer.center = mainIMV.center
+        newLayer.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        dropDown(false)
     }
     
     private func dropDown(_ open: Bool) {
@@ -110,6 +125,14 @@ class ViewController: UIViewController {
         dropDown.alpha = open ? 0 : 1
         layerItem.isEnabled = false
         if open {
+            let anchor = layerItem.centralBottom(in: view)
+            let point = dropDown.point
+            let origin = CGPoint(x: anchor.x - point.x, y: anchor.y + 12)
+            dropDown.frame.origin = origin
+            let height = CGFloat(min(7, manager.layers.count+1)) *
+                manager.cellHeight
+                + dropDown.arrowSize.height
+            dropDown.frame.size = .init(width: 300, height: height)
             view.addSubview(dropDown)
         }
         UIView.animate(withDuration: 0.4, animations: { [weak self] in

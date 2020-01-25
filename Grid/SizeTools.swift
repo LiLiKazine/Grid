@@ -30,3 +30,13 @@ extension UIEdgeInsets {
         return [self.top, self.right, self.bottom, self.left]
     }
 }
+
+extension UIBarButtonItem {
+    func centralBottom(in parent: UIView) -> CGPoint {
+        guard let view = self.value(forKey: "view")  as? UIView else { return .zero }
+        let origin = view.frame.origin
+        let size = view.frame.size
+        let point = CGPoint(x: origin.x + size.width * 0.5, y: origin.y + size.height)
+        return view.convert(point, to: parent)
+    }
+}
