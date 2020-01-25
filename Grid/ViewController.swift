@@ -12,6 +12,8 @@ import RxCocoa
 
 class ViewController: UIViewController {
     typealias Line = GridMask.Line
+    @IBOutlet weak var layerItem: UIBarButtonItem!
+    @IBOutlet var dropDown: DropDown!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var widgetContainer: UIView!
     @IBOutlet weak var mainIMV: UIImageView!
@@ -26,10 +28,18 @@ class ViewController: UIViewController {
         return [top, trailing, bottom, leading]
     }
     private let bag = DisposeBag()
-    
+    private let manager = LayerManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         singleTapGesture.require(toFail: twiceTapGesture)
+        NotificationCenter.default.rx
+            .notification(UIDevice.orientationDidChangeNotification)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.dropDown(false)
+            })
+        .disposed(by: bag)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,10 +102,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func layerAction(_ sender: UIBarButtonItem) {
-        
+        dropDown(sender.tintColor == .systemBlue)
+    }
+    
+    private func dropDown(_ open: Bool) {
+        layerItem.tintColor = open ? .systemGray : .systemBlue
+        dropDown.alpha = open ? 0 : 1
+        layerItem.isEnabled = false
+        if open {
+            view.addSubview(dropDown)
+        }
+        UIView.animate(withDuration: 0.4, animations: { [weak self] in
+            self?.dropDown.alpha = open ? 1 : 0
+        }) { [weak self] _ in
+            self?.layerItem.isEnabled = true
+            if !open {
+                self?.dropDown.removeFromSuperview()
+            }
+        }
     }
     
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+        dropDown(false)
         switch sender {
         case singleTapGesture:
             if let bar = navigationController?.navigationBar {

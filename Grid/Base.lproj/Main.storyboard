@@ -71,12 +71,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Grid" id="QpT-or-3XK">
                         <rightBarButtonItems>
-                            <barButtonItem image="icon_import" id="XQN-52-BnJ">
+                            <barButtonItem image="icon_import" style="plain" id="XQN-52-BnJ">
+                                <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="importAction:" destination="BYZ-38-t0r" id="bfR-qs-amY"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="icon_layer" id="eyO-pP-YLv">
+                            <barButtonItem image="icon_layer" style="plain" id="eyO-pP-YLv">
+                                <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="layerAction:" destination="BYZ-38-t0r" id="508-yq-Jxi"/>
                                 </connections>
@@ -85,7 +87,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottom" destination="Gid-Bi-fVW" id="pG9-YY-DAo"/>
+                        <outlet property="dropDown" destination="L4Q-Nb-ClM" id="Aqg-6y-SjE"/>
                         <outlet property="gridView" destination="Rf1-3j-cL3" id="SNf-OX-bKz"/>
+                        <outlet property="layerItem" destination="eyO-pP-YLv" id="Wsi-21-yaE"/>
                         <outlet property="leading" destination="QT6-59-3CG" id="LDA-eG-g5g"/>
                         <outlet property="mainIMV" destination="YnS-r4-BWl" id="noW-n5-OS3"/>
                         <outlet property="scrollView" destination="hSZ-Lp-dAy" id="1Fa-r1-sot"/>
@@ -107,6 +111,12 @@
                         <action selector="tapped:" destination="BYZ-38-t0r" id="gwI-ia-VRQ"/>
                     </connections>
                 </tapGestureRecognizer>
+                <view contentMode="scaleToFill" id="L4Q-Nb-ClM" customClass="DropDown" customModule="Grid" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="CCr-hX-XKu"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="735.9375" y="135.7247437774524"/>
         </scene>
@@ -131,7 +141,7 @@
     </scenes>
     <resources>
         <image name="example" width="945" height="1680"/>
-        <image name="icon_import" width="48" height="48"/>
-        <image name="icon_layer" width="48" height="48"/>
+        <image name="icon_import" width="24" height="24"/>
+        <image name="icon_layer" width="24" height="24"/>
     </resources>
 </document>

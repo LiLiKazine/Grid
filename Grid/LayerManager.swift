@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LayerManagert {
+class LayerManager {
     private(set) var layers: [GridMask]
     private(set) var curIndex: Int?
     

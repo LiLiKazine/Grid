@@ -25,6 +25,7 @@
 		095F116C23DA159200520252 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F114D23DA132F00520252 /* RxRelay.framework */; };
 		095F116D23DA159200520252 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 095F114D23DA132F00520252 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09CBE53C23DC2E6700746D57 /* LayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CBE53B23DC2E6700746D57 /* LayerManager.swift */; };
+		09CBE54823DC341C00746D57 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CBE54723DC341C00746D57 /* DropDown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		095F0FB423DA006E00520252 /* ActiveLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLine.swift; sourceTree = "<group>"; };
 		095F113B23DA132F00520252 /* Rx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rx.xcodeproj; path = ../RxSwift/Rx.xcodeproj; sourceTree = "<group>"; };
 		09CBE53B23DC2E6700746D57 /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
+		09CBE54723DC341C00746D57 /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				095F0FB223D9FAF300520252 /* GridView.xib */,
 				095F0FB423DA006E00520252 /* ActiveLine.swift */,
 				091F967B23DAA5B500938F78 /* GridMask.swift */,
+				09CBE54723DC341C00746D57 /* DropDown.swift */,
 			);
 			path = Grid;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				095F0F9D23D9C25700520252 /* SceneDelegate.swift in Sources */,
 				095F0FB123D9FAD400520252 /* GridView.swift in Sources */,
 				095F0FAF23D9D4CE00520252 /* SizeTools.swift in Sources */,
+				09CBE54823DC341C00746D57 /* DropDown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
