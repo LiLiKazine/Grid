@@ -16,6 +16,7 @@ class LayerManager {
             updateUserInteraction(curIndex)
         }
     }
+    private(set) var colors: [UIColor]
     let removeSubject: PublishSubject<GridView>
     let selectSubject: PublishSubject<GridView>
     let cellHeight: CGFloat = 72.0
@@ -24,6 +25,17 @@ class LayerManager {
         layers = [layer]
         removeSubject = .init()
         selectSubject = .init()
+        colors = [
+            .systemRed,
+            .systemYellow,
+            .systemBlue,
+            .systemGreen,
+            .systemPurple,
+            .systemOrange,
+            .systemPink,
+            .systemTeal,
+            .systemIndigo
+        ]
     }
     
     func select(at index: Int) {
@@ -35,6 +47,7 @@ class LayerManager {
     func addLayer(_ layer: GridView) {
         layers.append(layer)
         curIndex = layers.count - 1
+        layer.setLineColor(colors[curIndex])
     }
     
     func addLayers(_ layers: [GridView]) {

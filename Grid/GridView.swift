@@ -23,9 +23,17 @@ class GridView: UIView {
     @IBOutlet weak var v2Line: ActiveLine!
     
     let positionSubject: PublishSubject<Position> = .init()
-    
+    private(set) var lineColor: UIColor = .clear
     private let bag = DisposeBag()
     private var baseVal: CGFloat?
+    
+    func setLineColor(_ color: UIColor) {
+        for l in [h1Line, h2Line, v1Line, v2Line] {
+            l?.lineColor = color
+        }
+        gridMask.hLineColor = color
+        gridMask.vLineColor = color
+    }
     
     private func move(_ constraint: NSLayoutConstraint, _ sender: UIPanGestureRecognizer, isHorizontal: Bool) {
         let translation = sender.translation(in: contentView)

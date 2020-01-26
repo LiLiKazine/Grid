@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         manager = .init(layer: gridView)
+        gridView.setLineColor(manager.colors[manager.curIndex])
         singleTapGesture.require(toFail: twiceTapGesture)
         NotificationCenter.default.rx
             .notification(UIDevice.orientationDidChangeNotification)
@@ -125,6 +126,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addLayer(_ sender: UIButton) {
+        if manager.layers.count == manager.colors.count { return }
         let newLayer = GridView(frame: mainIMV.frame)
         manager.addLayer(newLayer)
         widgetContainer.addSubview(newLayer)
