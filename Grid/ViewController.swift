@@ -125,6 +125,15 @@ class ViewController: UIViewController {
         dropDown(sender.tintColor == .systemBlue)
     }
     
+    @IBAction func saveAction(_ sender: UIBarButtonItem) {
+        UIGraphicsBeginImageContext(widgetContainer.bounds.size)
+        widgetContainer.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        guard image != nil else { return }
+        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+    }
+    
     @IBAction func addLayer(_ sender: UIButton) {
         if manager.layers.count == manager.colors.count { return }
         let newLayer = GridView(frame: mainIMV.frame)

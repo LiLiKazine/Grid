@@ -71,6 +71,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Grid" id="QpT-or-3XK">
+                        <barButtonItem key="leftBarButtonItem" image="icon_ save" id="G3w-Lf-tfL">
+                            <connections>
+                                <action selector="saveAction:" destination="BYZ-38-t0r" id="Coy-GF-402"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="icon_import" id="XQN-52-BnJ">
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -238,6 +243,7 @@
     </scenes>
     <resources>
         <image name="example" width="945" height="1680"/>
+        <image name="icon_ save" width="24" height="24"/>
         <image name="icon_add" width="36" height="36"/>
         <image name="icon_check" width="16" height="16"/>
         <image name="icon_import" width="24" height="24"/>
