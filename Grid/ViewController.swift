@@ -45,6 +45,20 @@ class ViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] i in
                 self?.manager.removeLayer(at: i)
+                self?.dropDown(false)
+            })
+        .disposed(by: bag)
+        dropDown.selectSubject
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] i in
+                self?.manager.select(at: i)
+                self?.dropDown(false)
+            })
+            .disposed(by: bag)
+        manager.removeSubject
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { v in
+                v.removeFromSuperview()
             })
         .disposed(by: bag)
     }
@@ -125,6 +139,10 @@ class ViewController: UIViewController {
         dropDown.alpha = open ? 0 : 1
         layerItem.isEnabled = false
         if open {
+            let layers = manager.layers
+                .enumerated()
+                .map { "Layer \($0.0)" }
+            dropDown.setLayers(layers, selected: manager.curIndex)
             let anchor = layerItem.centralBottom(in: view)
             let point = dropDown.point
             let origin = CGPoint(x: anchor.x - point.x, y: anchor.y + 12)

@@ -28,14 +28,16 @@ class DropDown: UIView {
     }
     
     let removeSubject: PublishSubject<Int> = .init()
+    let selectSubject: PublishSubject<Int> = .init()
     private(set) var layers: [String] = []
-    
-    func setLayers(_ layers: [String]) {
+    private(set) var selected: Int = 0
+    func setLayers(_ layers: [String], selected: Int) {
         self.layers = layers
+        self.selected = selected
         layersCollection.reloadData()
     }
     
-    func removeLayer(at index: Int) {
+    private func removeLayer(at index: Int) {
         if index < layers.count {
             let _ = layers.remove(at: index)
             layersCollection.reloadData()
@@ -99,11 +101,14 @@ extension DropDown: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "layer", for: indexPath) as! LayerCollectionCell
         let i = indexPath.row
-        cell.setup(i, name: layers[i]) { [weak self] in
+        cell.setup(i, selected: selected == i, name: layers[i]) { [weak self] in
             self?.removeLayer(at: i)
         }
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectSubject.onNext(indexPath.row)
+    }
     
 }
