@@ -113,11 +113,12 @@ class ViewController: UIViewController {
         scrollView.setZoomScale(CGFloat(1/ratio), animated: true)
     }
     
-    @IBAction func importAction(_ sender: UIBarButtonItem) {if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .photoLibrary
-        present(picker, animated: true, completion: nil)
+    @IBAction func importAction(_ sender: UIBarButtonItem) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            present(picker, animated: true, completion: nil)
         }
     }
     
@@ -131,7 +132,19 @@ class ViewController: UIViewController {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         guard image != nil else { return }
-        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(image!, self, #selector(saveCompletion(image:error:context:)), nil)
+    }
+    
+    @objc func saveCompletion(image: UIImage, error: Error?, context: UnsafeMutableRawPointer) {
+        if error == nil {
+            let ac = UIAlertController(title: "Saved!", message: "Image saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true, completion: nil)
+        } else {
+            let ac = UIAlertController(title: "Save error", message: error?.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true, completion: nil)
+        }
     }
     
     @IBAction func addLayer(_ sender: UIButton) {
