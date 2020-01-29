@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var bottom: NSLayoutConstraint!
     @IBOutlet var singleTapGesture: UITapGestureRecognizer!
     @IBOutlet var twiceTapGesture: UITapGestureRecognizer!
+    @IBOutlet weak var measureLbl: UILabel!
     private var constraints: [NSLayoutConstraint]{
         return [top, trailing, bottom, leading]
     }
@@ -60,6 +61,22 @@ class ViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { v in
                 v.removeFromSuperview()
+            })
+        .disposed(by: bag)
+        gridView.measureSubject
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] measure in
+                let lbls: [String] = ["top: ", "right: ", "bottom: ", "left: "]
+                let top = measure.top/measure.gapH
+                let right = measure.right/measure.gapV
+                let bottom = measure.bottom/measure.gapH
+                let left = measure.left/measure.gapV
+                var str: String = ""
+                for i in 0...3 {
+                    str += (lbls[i] +
+                        String(format: "%.2f",[top, right, bottom, left][i]) + "\n")
+                    self?.measureLbl.text = str
+                }
             })
         .disposed(by: bag)
     }

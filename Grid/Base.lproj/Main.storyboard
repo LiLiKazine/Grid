@@ -60,12 +60,20 @@
                                     <outletCollection property="gestureRecognizers" destination="qy6-ex-V2F" appends="YES" id="Q08-Sq-6r4"/>
                                 </connections>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9E-yd-2SK">
+                                <rect key="frame" x="24" y="74" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hSZ-Lp-dAy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2zw-mZ-DbB"/>
                             <constraint firstItem="hSZ-Lp-dAy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MuY-hW-4qY"/>
                             <constraint firstAttribute="trailing" secondItem="hSZ-Lp-dAy" secondAttribute="trailing" id="UHE-LA-znA"/>
+                            <constraint firstItem="q9E-yd-2SK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="ZCx-Ce-7Zf"/>
+                            <constraint firstItem="q9E-yd-2SK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="cKM-X2-Hoo"/>
                             <constraint firstAttribute="bottom" secondItem="hSZ-Lp-dAy" secondAttribute="bottom" id="uhZ-mZ-CBq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -98,6 +106,7 @@
                         <outlet property="layerItem" destination="eyO-pP-YLv" id="Wsi-21-yaE"/>
                         <outlet property="leading" destination="QT6-59-3CG" id="LDA-eG-g5g"/>
                         <outlet property="mainIMV" destination="YnS-r4-BWl" id="noW-n5-OS3"/>
+                        <outlet property="measureLbl" destination="q9E-yd-2SK" id="z3S-cz-Baj"/>
                         <outlet property="scrollView" destination="hSZ-Lp-dAy" id="1Fa-r1-sot"/>
                         <outlet property="singleTapGesture" destination="zMu-If-WQe" id="XH3-D6-iPO"/>
                         <outlet property="top" destination="JKo-OW-Oth" id="MRB-bg-1n4"/>

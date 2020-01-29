@@ -11,6 +11,7 @@ import RxSwift
 
 class GridView: UIView {
     typealias Line = GridMask.Line
+    typealias Measure = GridMask.Measure
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var gridMask: GridMask!
     @IBOutlet weak var h1Top: NSLayoutConstraint!
@@ -23,6 +24,7 @@ class GridView: UIView {
     @IBOutlet weak var v2Line: ActiveLine!
     
     let positionSubject: PublishSubject<Position> = .init()
+    let measureSubject: PublishSubject<Measure> = .init()
     private(set) var lineColor: UIColor = .clear
     private let bag = DisposeBag()
     private var baseVal: CGFloat?
@@ -87,6 +89,10 @@ class GridView: UIView {
             .subscribe(onNext: { [weak self] lines in
                 self?.gridMask.update(lines: lines)
             })
+            .disposed(by: bag)
+        
+        gridMask.measureSubject
+            .bind(to: measureSubject)
             .disposed(by: bag)
     }
     
